@@ -29,4 +29,20 @@ class Test {
                 "           R                                ${nl}"
         assertEquals(result, outputFile.readText())
     }
+
+    @Test
+    fun consoleOut() {
+        val inputFile = File("input1")
+        inputFile.writeText("ABVC B CU DOT ER FACE UP${nl}" +
+                "GRED HaN IM JU LAY MKEP N OPEN PIN R${nl}" +
+                "Sd TiRY Yang UI${nl}" +
+                "VIEW WHEELS")
+        main("input1 -a 6 -r".split(" ").toTypedArray())
+    }
+
+    @Test
+    fun mistakeObject() {
+        main("-z 6 -dafaf".split(" ").toTypedArray())
+    }
+
 }

@@ -1,13 +1,16 @@
 package org.example
 
-import java.io.BufferedReader
-import java.io.BufferedWriter
-import java.io.File
+import java.io.*
 import java.lang.StringBuilder
 
 fun main(args: Array<String>) {
     val x = ConsoleProgram()
     x.launch(args)
+    if (x.nameFile != null) {
+        if (!File(x.nameFile!!).isFile && !File(x.nameFile!!).exists()) {
+            throw FileNotFoundException("Не удается найти указанный файл")
+        }
+    }
     val output = if (x.outputFile == null) System.out.bufferedWriter() else File(x.outputFile!!).bufferedWriter()
     val input = if (x.nameFile == null) System.`in`.bufferedReader() else File(x.nameFile!!).bufferedReader()
     transposes(input, output, x.a, x.t, x.r)

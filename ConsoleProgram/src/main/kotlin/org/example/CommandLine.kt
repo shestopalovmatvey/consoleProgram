@@ -4,6 +4,7 @@ import org.kohsuke.args4j.Argument
 import org.kohsuke.args4j.CmdLineException
 import org.kohsuke.args4j.CmdLineParser
 import org.kohsuke.args4j.Option
+import java.io.File
 import java.lang.IllegalArgumentException
 
 
@@ -30,7 +31,10 @@ class ConsoleProgram {
         try {
             parser.parseArgument(args.toMutableList())
         } catch (e: CmdLineException) {
-            throw IllegalArgumentException()
+            System.err.println(e.message)
+            System.err.println("transposes.jar [file] [-o ofile] [-a num] [-t] [-r]")
+            parser.printUsage(System.err)
+            return
         }
     }
 }
