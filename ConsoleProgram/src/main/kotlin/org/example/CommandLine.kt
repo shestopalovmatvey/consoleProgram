@@ -6,6 +6,7 @@ import org.kohsuke.args4j.CmdLineParser
 import org.kohsuke.args4j.Option
 import java.io.File
 import java.lang.IllegalArgumentException
+import kotlin.system.exitProcess
 
 
 class ConsoleProgram {
@@ -33,8 +34,7 @@ class ConsoleProgram {
         } catch (e: CmdLineException) {
             System.err.println(e.message)
             System.err.println("transposes.jar [file] [-o ofile] [-a num] [-t] [-r]")
-            parser.printUsage(System.err)
-            return
+            throw e
         }
     }
 }

@@ -15,6 +15,7 @@ fun main(args: Array<String>) {
     val input = if (x.nameFile == null) System.`in`.bufferedReader() else File(x.nameFile!!).bufferedReader()
     transposes(input, output, x.a, x.t, x.r)
     output.close()
+    input.close()
 }
 
 fun transposes(input: BufferedReader, output: BufferedWriter, a: Int, t: Boolean, r: Boolean) {
